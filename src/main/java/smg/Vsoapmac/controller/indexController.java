@@ -183,13 +183,13 @@ public class indexController {
         // 查询条件，QueryBuilders工具实现
         // QueryBuilders.termQuery 精确查询
         // QueryBuilders.matchAllQuery 匹配所有
-        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "USA");
+        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "CHINA");
 
         searchSourceBuilder.query(termQueryBuilder);
         searchSourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
         searchRequest.source(searchSourceBuilder);
 
         SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
-        System.out.println(searchResponse.getHits());
+        System.out.println(searchResponse.getHits().getHits().length);
     }
 }
