@@ -1,6 +1,7 @@
 package smg.Vsoapmac.Configuration;
 
 import org.apache.http.HttpHost;
+import org.apache.tika.Tika;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.context.annotation.Bean;
@@ -16,5 +17,10 @@ public class ElasticSearchConfig {
         RestHighLevelClient restHighLevelClient = new RestHighLevelClient(
                 RestClient.builder(new HttpHost("localhost" , 9200 , "http")));
         return restHighLevelClient;
+    }
+
+    @Bean
+    public Tika tika(){
+        return new Tika();
     }
 }
